@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Ashiquzzaman</Authors>
+    <Description>AzR Utility for C#</Description>
+    <Copyright>Ashiquzzaman</Copyright>
+    <RepositoryType></RepositoryType>
+    <PackageTags>AzR Utility Utilities Helper Csharp Helpers .NET .NET Core NetCore AspNetCore</PackageTags>
+    <PackageReleaseNotes>Pre compile release</PackageReleaseNotes>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+  </ItemGroup>
+</Project>
