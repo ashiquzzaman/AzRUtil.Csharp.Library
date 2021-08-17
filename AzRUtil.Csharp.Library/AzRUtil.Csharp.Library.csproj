@@ -4,12 +4,13 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>Ashiquzzaman</Authors>
     <Description>AzR Utility for C#</Description>
-    <Copyright>Ashiquzzaman</Copyright>
+    <Copyright>© Ashiquzzaman. All rights reserved.</Copyright>
     <RepositoryType></RepositoryType>
     <PackageTags>AzR Utility Utilities Helper Csharp Helpers .NET .NET Core NetCore AspNetCore</PackageTags>
     <PackageReleaseNotes>Pre compile release</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/ashiquzzaman/AzRUtil.Csharp.Library</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ashiquzzaman/AzRUtil.Csharp.Library</RepositoryUrl>
+    <Version>1.1.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />

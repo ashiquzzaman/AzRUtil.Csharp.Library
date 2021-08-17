@@ -119,7 +119,7 @@ namespace AzRUtil.Csharp.Library.Extensions
             return sb.ToString();
 
         }
-        public static string Md5Encrypt(this string toencrypt, string key = "AzR+SK", bool usehashing = true)
+        public static string Md5Encrypt(this string toencrypt, string key, bool usehashing = true)
         {
             byte[] keyArray;
 
@@ -165,7 +165,7 @@ namespace AzRUtil.Csharp.Library.Extensions
             }
         }
 
-        public static string Md5Decrypt(this string todecrypt, string key = "AzR+SK", bool usehashing = true)
+        public static string Md5Decrypt(this string todecrypt, string key, bool usehashing = true)
         {
             byte[] toEncryptArray;
 

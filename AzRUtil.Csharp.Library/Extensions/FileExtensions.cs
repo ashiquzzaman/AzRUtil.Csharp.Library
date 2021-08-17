@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AzRUtil.Csharp.Library.Extensions
 {
-    public static class FileExtentions
+    public static class FileExtensions
     {
         private static IDictionary<string, string> _mappings =
             new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)

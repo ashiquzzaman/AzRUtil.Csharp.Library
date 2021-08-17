@@ -1,14 +1,15 @@
-﻿using AzRUtil.Csharp.Library.Enumerations;
+﻿using AzRUtil.Csharp.Library.Constants;
 
 namespace AzRUtil.Csharp.Library.Models
 {
     public class AppLayout
     {
-        public AdminTheme AdminTheme { get; set; }
-        public LayoutType LayoutType { get; set; }
-        public SaveFormType SaveFormType { get; set; }
-        public ContentType ContentType { get; set; }
-        public ModalType ModalType { get; set; }
+        public LibConstants.FrontTheme FrontTheme { get; set; }
+        public LibConstants.AdminTheme AdminTheme { get; set; }
+        public LibConstants.LayoutType LayoutType { get; set; }
+        public LibConstants.SaveFormType SaveFormType { get; set; }
+        public LibConstants.ContentType ContentType { get; set; }
+        public LibConstants.ModalType ModalType { get; set; }
         public bool IsMaterialDesignEnable { get; set; }
     }
 }

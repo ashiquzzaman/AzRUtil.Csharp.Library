@@ -1,39 +1,39 @@
-﻿using System;
+﻿using AzRUtil.Csharp.Library.Constants;
+using AzRUtil.Csharp.Library.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using AzRUtil.Csharp.Library.Enumerations;
-using AzRUtil.Csharp.Library.Models;
 using DayOfWeek = System.DayOfWeek;
 
 namespace AzRUtil.Csharp.Library.Extensions
 {
-    public static class EnumerationExtentions
+    public static class EnumerationExtensions
     {
         public static T As<T>(this Enum c) where T : struct
         {
             return (T)System.Enum.Parse(typeof(T), c.ToString(), false);
         }
 
-        public static DateTime FirstDayOfMonth(this MonthOfYear month, int year)
+        public static DateTime FirstDayOfMonth(this LibConstants.MonthOfYear month, int year)
         {
             return new DateTime(year, (int)month, 1);
         }
 
-        public static DateTime LastDayOfMonth(this MonthOfYear month, int year)
+        public static DateTime LastDayOfMonth(this LibConstants.MonthOfYear month, int year)
         {
             var firstDayOfTheMonth = new DateTime(year, (int)month, 1);
             return firstDayOfTheMonth.AddMonths(1).AddDays(-1);
         }
-        public static int DaysOfMonth(this MonthOfYear month, int year)
+        public static int DaysOfMonth(this LibConstants.MonthOfYear month, int year)
         {
             var firstDate = month.FirstDayOfMonth(year);
             var lastDate = month.LastDayOfMonth(year);
 
             return (lastDate - firstDate).Days;
         }
-        public static int HolidaysOfMonth(this MonthOfYear month, int year, List<DayOfWeek> holidays, List<DateTime> excludedDates = null)
+        public static int HolidaysOfMonth(this LibConstants.MonthOfYear month, int year, List<DayOfWeek> holidays, List<DateTime> excludedDates = null)
         {
             var firstDate = month.FirstDayOfMonth(year);
             var lastDate = month.LastDayOfMonth(year);
@@ -47,7 +47,7 @@ namespace AzRUtil.Csharp.Library.Extensions
 
             return Enumerable.Range(0, (lastDate - firstDate).Days).Count(IsWorkingDay);
         }
-        public static int WorkingDaysOfMonth(this MonthOfYear month, int year, List<DayOfWeek> holidays, List<DateTime> excludedDates = null)
+        public static int WorkingDaysOfMonth(this LibConstants.MonthOfYear month, int year, List<DayOfWeek> holidays, List<DateTime> excludedDates = null)
         {
             var firstDate = month.FirstDayOfMonth(year);
             var lastDate = month.LastDayOfMonth(year);

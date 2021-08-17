@@ -1,3 +1,5 @@
+using AzRUtil.Csharp.Library.Attributes;
+using AzRUtil.Csharp.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,12 +11,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Xml.Serialization;
-using AzRUtil.Csharp.Library.Attributes;
-using AzRUtil.Csharp.Library.Models;
 
 namespace AzRUtil.Csharp.Library.Extensions
 {
-    public static class ObjectExtentions
+    public static class ObjectExtensions
     {
 
 
