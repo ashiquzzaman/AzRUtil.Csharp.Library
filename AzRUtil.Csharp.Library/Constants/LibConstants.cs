@@ -194,6 +194,19 @@ namespace AzRUtil.Csharp.Library.Constants
             AllDeviceSync = 3,
             SyncFailed = 10,
         }
+        public enum UniqueIdentifier
+        {
+            Email = 1,
+            PhoneNumber = 2,
+            UniqueName = 3,
+            UserName = 4,
+        }
+        public enum SaveContinueType
+        {
+            None = 0,
+            Add = 1,
+            Edit = 2
+        }
 
         #endregion
 
