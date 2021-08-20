@@ -207,7 +207,12 @@ namespace AzRUtil.Csharp.Library.Constants
             Add = 1,
             Edit = 2
         }
-
+        public enum SenderOptions
+        {
+            ResetPassword = 0,
+            ConfirmEmail = 1,
+            Others = 100
+        }
         #endregion
 
 
