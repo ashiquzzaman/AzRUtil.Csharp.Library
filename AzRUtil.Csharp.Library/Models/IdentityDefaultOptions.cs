@@ -17,7 +17,11 @@
 
         //user settings
         public bool UserRequireUniqueEmail { get; set; }
+        public string UserAllowedUserNameCharacters { get; set; }
+
+        //SignIn
         public bool SignInRequireConfirmedEmail { get; set; }
+        public bool SignInRequireConfirmedPhoneNumber { get; set; }
 
         //cookie settings
         public bool CookieHttpOnly { get; set; }

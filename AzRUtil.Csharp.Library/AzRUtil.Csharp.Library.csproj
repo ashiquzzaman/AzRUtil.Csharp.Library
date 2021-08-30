@@ -8,9 +8,9 @@
     <RepositoryType></RepositoryType>
     <PackageTags>AzR Utility Utilities Helper Csharp Helpers .NET .NET Core NetCore AspNetCore</PackageTags>
     <PackageReleaseNotes>Pre compile release</PackageReleaseNotes>
-    <PackageProjectUrl>https://github.com/ashiquzzaman/AzRUtil.Csharp.Library</PackageProjectUrl>
+    <PackageProjectUrl>http://ashiquzzaman.me/project/AzRUtil.Csharp.Library</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ashiquzzaman/AzRUtil.Csharp.Library</RepositoryUrl>
-    <Version>1.2.2</Version>
+    <Version>1.2.3</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
