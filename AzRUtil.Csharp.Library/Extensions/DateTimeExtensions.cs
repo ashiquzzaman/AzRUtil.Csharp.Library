@@ -42,7 +42,7 @@ namespace AzRUtil.Csharp.Library.Extensions
             }
         }
 
-        #region LONG & STRING DATETIME
+        #region STRING DATETIME
 
 
         public static DateTime ToUtcDateTime(this string value)
@@ -64,6 +64,24 @@ namespace AzRUtil.Csharp.Library.Extensions
 
             return localDateTime;
         }
+        public static string ToFriendlyDateTime(this DateTime value)
+        {
+            if (value <= DateTime.UtcNow) return "Just now";
+
+            var dateTime = DateTime.ParseExact(value.ToString(), "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+            var localDateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc).ConvertLocalTime();
+            var span = DateTime.UtcNow - localDateTime;
+
+            if (span > TimeSpan.FromHours(24))
+            {
+                return dateTime.ToString("MMM dd");
+            }
+            if (span > TimeSpan.FromMinutes(60))
+            {
+                return $"{span.Hours}h";
+            }
+            return span > TimeSpan.FromSeconds(60) ? $"{span.Minutes}m ago" : "Just now";
+        }
 
 
 
@@ -71,7 +89,183 @@ namespace AzRUtil.Csharp.Library.Extensions
 
         #endregion
 
+        #region CUSTOM LONG DATETIME
 
+        #region DATE
+
+        public static DateTime LongToDateTime(this long value)
+        {
+            var dateTime = DateTime.ParseExact(value.ToString(), "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+            var localDateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc).ConvertLocalTime();
+            return localDateTime;
+        }
+
+        public static DateTime LongToDateTimeUtc(this long value)
+        {
+            var dateTime = DateTime.ParseExact(value.ToString(), "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+            return dateTime;
+        }
+
+        public static long ToLong(this DateTime dateTime)
+        {
+            return Convert.ToInt64(dateTime.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture));
+        }
+
+        public static long ToDateTimeLong(this string value)
+        {
+
+            var time = new DateTime();
+            var matchingCulture =
+                CultureInfo.GetCultures(CultureTypes.AllCultures)
+                    .FirstOrDefault(ci => DateTime.TryParse(value, ci, DateTimeStyles.None, out time));
+            var longDate = Convert.ToInt64(time.ToString("yyyyMMddHHmmss", matchingCulture));//issue 
+
+            return longDate;
+        }
+
+        public static long ToDateLong(this string value)
+        {
+
+            var time = new DateTime();
+            var matchingCulture =
+                CultureInfo.GetCultures(CultureTypes.AllCultures)
+                    .FirstOrDefault(ci => DateTime.TryParse(value, ci, DateTimeStyles.None, out time));
+            var longDate = Convert.ToInt64(time.Date.ToString("yyyyMMddHHmmss", matchingCulture));//issue 
+
+            return longDate;
+        }
+
+        public static string ToDateTimeString(this long value, string format = "MMM dd, yyyy h:mm tt")
+        {
+            if (value < 1)
+            {
+                return string.Empty;
+            }
+            var dateTimeStr = value.ToString().PadRight(14, '0');
+            var dateTime =
+                DateTime.ParseExact(dateTimeStr, "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+            var localDateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc).ConvertLocalTime();
+            var returnValue = localDateTime.ToString(format);
+            return returnValue;
+        }
+
+        public static string ToDateString(this long value, string format = "MMM dd, yyyy ")
+        {
+            if (value < 1)
+            {
+                return string.Empty;
+            }
+            var dateTimeStr = value.ToString().PadRight(14, '0');
+            var dateTime =
+                DateTime.ParseExact(dateTimeStr, "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+            var localDateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc).ConvertLocalTime();
+            var returnValue = localDateTime.ToString(format);
+            return returnValue;
+        }
+
+        public static string ToUtcDateTimeString(this long value, string format = "MMM dd, yyyy h:mm tt")
+        {
+            var dateTimeStr = value.ToString().PadRight(14, '0');
+            var span =
+                DateTime.ParseExact(dateTimeStr, "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+            var returnValue = span.ToString(format);
+            return returnValue;
+        }
+
+        public static string ToFriendlyDateTime(this long value)
+        {
+            if (value <= 0) return "Just now";
+
+            var dateTime = DateTime.ParseExact(value.ToString(), "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+            var localDateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc).ConvertLocalTime();
+            var span = DateTime.UtcNow - localDateTime;
+
+            if (span > TimeSpan.FromHours(24))
+            {
+                return dateTime.ToString("MMM dd");
+            }
+            if (span > TimeSpan.FromMinutes(60))
+            {
+                return $"{span.Hours}h";
+            }
+            return span > TimeSpan.FromSeconds(60) ? $"{span.Minutes}m ago" : "Just now";
+        }
+
+        #endregion
+        #region TIME
+
+        public static string TimeTickToString(this long timeTick)
+        {
+            var dateTime = new DateTime(timeTick);
+            var result = dateTime.ToString("hh:mm tt", CultureInfo.InvariantCulture);
+            return result;
+        }
+
+        public static string ToTimeString(this int value, string format = "h:mm tt")
+        {
+            var intTime = value.ToString();
+            var timeStr = intTime.Length <= 6 ? intTime.PadLeft(6, '0') : intTime.Substring(0, 6);//value.IntToTimeString()
+            var dateTime =
+                DateTime.ParseExact(timeStr, "HHmmss", CultureInfo.InvariantCulture);
+            var localDateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc).ConvertLocalTime();
+            return localDateTime.ToString(format);
+        }
+
+        public static string ToLocalTimeString(this string timeStr, string format = "h:mm tt")
+        {
+            timeStr = timeStr.Length <= 6 ? timeStr.PadLeft(6, '0') : timeStr.Substring(0, 6);//value.IntToTimeString()
+            var dateTime =
+                DateTime.ParseExact(timeStr, "HHmmss", CultureInfo.InvariantCulture);
+            var localDateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc).ConvertLocalTime();
+            return localDateTime.ToString(format);
+        }
+
+        public static DateTime ToLocalTime(this string timeStr)
+        {
+            timeStr = timeStr.PadLeft(6, '0');
+            var dateTime =
+                DateTime.ParseExact(timeStr, "HHmmss", CultureInfo.InvariantCulture);
+            var localDateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc).ConvertLocalTime();
+            return localDateTime;
+        }
+
+        public static DateTime ToLocalTime(this int time)
+        {
+            return time.ToString().ToLocalTime();
+        }
+
+        public static TimeSpan GetCurrentTimeStamp()
+        {
+            var currentTime = DateTimeExtensions.ToLocalNow().ToString("h:mm tt").ToTimeOfDayFrom12Time();
+            return currentTime;
+        }
+
+        public static TimeSpan ToTimeOfDayFrom12Time(this string stringTime)
+        {
+            TimeSpan time = DateTime.Parse(stringTime, CultureInfo.InvariantCulture).TimeOfDay;
+            return time;
+        }
+
+        public static int ToUtc24TimeInt(this string stringTime)//Create UTC Time  int from time string
+        {
+            var utcTime = DateTimeOffset.Parse(stringTime).UtcDateTime.ToString("HHmmss", CultureInfo.InvariantCulture);
+            return Convert.ToInt32(utcTime);
+        }
+
+
+        public static int To24TimeInt(this string stringTime)//Create LOCAL Time  int from time string
+        {
+            var utcTime = DateTimeOffset.Parse(stringTime).DateTime.ToString("HHmmss", CultureInfo.InvariantCulture);
+            return Convert.ToInt32(utcTime);
+        }
+
+        public static int ToIntTime(this DateTime dateTime)
+        {
+            return Convert.ToInt32(dateTime.ToString("HHmmss", CultureInfo.InvariantCulture));
+        }
+
+        #endregion
+        #endregion
 
         #region Julian
 
