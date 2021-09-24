@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace AzRUtil.Csharp.Library.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ChangeLog
     {
         public ChangeLog()

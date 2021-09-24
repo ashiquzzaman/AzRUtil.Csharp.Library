@@ -6,7 +6,9 @@ namespace AzRUtil.Csharp.Library
 {
     public static class AppConstant
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static string AssemblyRootPath
         {
             get
@@ -16,6 +18,9 @@ namespace AzRUtil.Csharp.Library
                 return startupPath;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public static string AssemblyStartupPath
         {
             get
@@ -25,8 +30,13 @@ namespace AzRUtil.Csharp.Library
 
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public static string StartupPath => Directory.GetCurrentDirectory();
+        /// <summary>
+        /// 
+        /// </summary>
         public static string WwwrootPath => StartupPath + "\\" + "wwwroot";
 
     }

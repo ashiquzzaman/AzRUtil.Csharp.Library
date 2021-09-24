@@ -8,11 +8,56 @@ namespace AzRUtil.Csharp.Library.Constants
         public enum FrontTheme
         {
             Default = 0,
+            AzR,
+            HK,
+            OTTS,
+            Quickai,
+            Item1,
+            Item2,
+            Item3,
+            Item4,
+            Item5,
+            Item6,
+            Item7,
+            Item8,
+            Item9,
+            Item10,
+
+        }
+        public enum ThemeBootstrap
+        {
+            V3 = 0,
+            V4,
+            V5
         }
         public enum AdminTheme
         {
             AdminLTE = 0,
-            AdminAzR = 1,
+            AdminAzR,
+            AdminSLEEK,
+            AdminMP,
+            AdminDA,
+            AdminFUSE,
+            AdminFOCUS,
+            AdminROBUST,
+            AdminSTAR,
+            AdminEASY,
+            AdminFLAT2,
+            AdminFLAT3,
+            AdminBSBM,
+            AdminPAGES,
+            AdminMDP,
+            AdminSING,
+            AdminMONSTER,
+            AdminLIMITLESS,
+            AdminPORTO,
+            AdminELEPHANT,
+            AdminLIGHT,
+            AdminCUBIC,
+            AdminELITE,
+            AdminCOLOR,
+            AdminSB,
+            AdminMETRONIC,
         }
         public enum LayoutType
         {

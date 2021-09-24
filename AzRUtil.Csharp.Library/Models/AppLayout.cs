@@ -2,6 +2,9 @@
 
 namespace AzRUtil.Csharp.Library.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AppLayout
     {
         public LibConstants.FrontTheme FrontTheme { get; set; }
@@ -10,6 +13,7 @@ namespace AzRUtil.Csharp.Library.Models
         public LibConstants.SaveFormType SaveFormType { get; set; }
         public LibConstants.ContentType ContentType { get; set; }
         public LibConstants.ModalType ModalType { get; set; }
+        public LibConstants.ThemeBootstrap ThemeBootstrap { get; set; }
         public bool IsMaterialDesignEnable { get; set; }
     }
 }
