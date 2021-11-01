@@ -4,6 +4,13 @@ namespace AzRUtil.Csharp.Library.Constants
 {
     public static class LibConstants
     {
+        public enum EmailClient
+        {
+            SMTP,
+            MailKit,
+            SendGrid,
+        }
+
         #region LayoutType
         public enum FrontTheme
         {
