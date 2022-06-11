@@ -8,8 +8,6 @@
         TCompany AppCompany { get; set; }
         string UserAgentInfo { get; }
         string UserIP { get; }
-
-        TCompany DefaultCompany();
-        TCompany SetAppCompany(TCompany appcompany = null);
+        TCompany DefaultCompany { get; set; }
     }
 }

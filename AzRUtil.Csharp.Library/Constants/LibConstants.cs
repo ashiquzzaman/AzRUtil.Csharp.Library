@@ -51,6 +51,9 @@ namespace AzRUtil.Csharp.Library.Constants
             AdminEASY,
             AdminFLAT2,
             AdminFLAT3,
+            AdminLTE3,
+            AdminSPICE,
+            AdminRICA,
             AdminBSBM,
             AdminPAGES,
             AdminMDP,
@@ -65,6 +68,7 @@ namespace AzRUtil.Csharp.Library.Constants
             AdminCOLOR,
             AdminSB,
             AdminMETRONIC,
+            AdminATLANTIS
         }
         public enum LayoutType
         {
